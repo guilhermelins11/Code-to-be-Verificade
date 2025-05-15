@@ -1,0 +1,159 @@
+<!-- estoque.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estoque</title>
+  <link rel="stylesheet" href="../css/painel.css" />
+  <link rel="shortcut icon" href="images/logoBlack.png" type="image/x-icon"/>
+</head>
+<style>
+aside {
+  width: 120px;
+  background-color: #0B386F;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.menu-topo, .menu-base {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-item {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.menu-item:hover {
+  background-color: #1F375A;
+}
+
+.menu-item.active {
+  background-color: #061F45;
+}
+
+.menu-item i {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 30px;
+}
+</style>
+
+<body>
+  <div class="sidebar">
+    <div class="menu-item logo">
+      <img src="images/logo.png" alt="Logo" class="logo-img" />
+    </div>
+    <a href="geral.html" class="menu-item">
+      <img src="images/icone-geral.png" alt="Geral" />
+      <span>Geral</span>
+    </a>
+    <a href="estoque.html" class="menu-item active">
+      <img src="images/icone-estoque.png" alt="Estoque" />
+      <span>Estoque</span>
+    </a>
+    <a href="config.html" class="menu-item">
+      <img src="images/icone-config.png" alt="Configurações" />
+      <span>Config.</span>
+    </a>
+    <a href="index.html" class="menu-item logout">
+      <img src="images/icone-sair.png" alt="Sair" />
+      <span>Sair</span>
+    </a>
+  </div>
+
+  <main class="main-content">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+      }
+  
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+  
+      button {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+  
+      button:hover {
+        background-color: #218838;
+      }
+  
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+  
+      th, td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+  
+      th {
+        background-color: #f4f4f4;
+      }
+    </style>
+  </head>
+  <body>
+  
+    <div class="header">
+      <h1>Estoque</h1>
+      <button onclick="location.href='novo-produto.html'">+ Novo Produto</button>
+    </div>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Categoria</th>
+          <th>Tipo</th>
+          <th>Valor</th>
+          <th>Gasto</th>
+          <th>Receita</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bebidas</td>
+          <td>Refrigerante</td>
+          <td>R$ 4,50</td>
+          <td>R$ 2,00</td>
+          <td>R$ 2,50</td>
+        </tr>
+        <!-- Outros produtos podem ser adicionados aqui -->
+      </tbody>
+    </table>
+  
+    <script src="../scripts/main.js"></script>
+</body>
+
+</html>
+
+

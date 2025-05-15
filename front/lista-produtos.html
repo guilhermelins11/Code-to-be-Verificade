@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Produto</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f9f9f9;
+      padding: 2rem;
+    }
+    .form-label {
+      font-weight: 600;
+    }
+    .input-group .form-control {
+      border-right: 0;
+    }
+    .input-group-text {
+      background-color: white;
+      border-left: 0;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="mb-4">Cadastro de Produto</h2>
+
+    <div class="mb-3">
+      <label class="form-label">ID</label>
+      <input type="text" id="productId" class="form-control" disabled placeholder="Gerado automaticamente">
+    </div>
+
+    <h4 class="mt-4 mb-3">Informações Básicas</h4>
+
+    <div class="row">
+      <!-- Categoria com lupa -->
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Categoria *</label>
+        <div class="input-group">
+          <input type="text" id="categoriaInput" class="form-control" placeholder="Escolha uma categoria" readonly>
+          <span class="input-group-text" onclick="toggleCategoriaSelect()">🔍</span>
+        </div>
+        <select id="categoriaSelect" class="form-select mt-2 hidden" onchange="selectCategoria(this.value)">
+          <option value="">-- Selecione --</option>
+          <option value="Moveis">Móveis</option>
+          <option value="Serviços">Serviços</option>
+          <option value="Eletro">Eletro</option>
+          <option value="Celulares e Telefonia">Celulares e Telefonia</option>
+          <option value="Áudio">Áudio</option>
+          <option value="Moda e Beleza">Moda e Beleza</option>
+          <option value="Animais de estimação">Animais de estimação</option>
+        </select>
+      </div>
+
+      <!-- Tipo atrelado à categoria -->
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Tipo</label>
+        <select id="tipoSelect" class="form-select">
+          <option value="">-- Selecione uma categoria primeiro --</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Valor do Serviço</label>
+        <input type="number" step="0.01" id="valor" class="form-control">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Tempo de trabalho estimado (horas) *</label>
+        <input type="text" id="tempo" class="form-control">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Gasto</label>
+        <input type="number" step="0.01" id="gasto" class="form-control">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Responsável</label>
+        <input type="text" id="responsavel" class="form-control">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Descrição do serviço</label>
+      <textarea class="form-control" id="descricao" rows="3"></textarea>
+    </div>
+
+    <div class="text-end">
+      <button class="btn btn-secondary me-2" onclick="window.location.href='listar.html'">Cancelar</button>
+      <button class="btn btn-primary" onclick="salvarProduto()">Salvar</button>
+    </div>
+  </div>
+
+  <script>
+    const tiposPorCategoria = {
+      "Moveis": ["Cama e Colchoes", "Sofás e Poltronas", "Bancos e Cadeiras", "Mesas", "Racks e Painés", "Outros"],
+      "Serviços": ["Serviços domésticos", "Babá", "Eventos/Festas", "Reparação/Conserto/Reforma", "Informatica", "Tradução", "Turismo", "Outros"],
+      "Eletro": ["Ar-condicionado", "Ventiladores e Climatizadores", "Geladeiras e Freezers", "Fogões e Fornos", "Eletroportáteis"],
+      "Celulares e Telefonia": ["Celulares e Smartphones", "Acessórios de Celular", "Peças de Celular", "Smartwatches", "Outros"],
+      "Áudio": ["Fones de Ouvido", "Microfones e Gravadores", "Equipamentos e Acessórios de Som", "Outros"],
+      "Moda e Beleza": ["Beleza e Cuidado Pessoal", "Roupas", "Bolsas, malas e mochilas", "Outros"],
+      "Animais de estimação": ["Acessórios para pets", "Cachorros", "Gatos", "Roedores", "Outros animais"]
+    };
+
+    function toggleCategoriaSelect() {
+      const select = document.getElementById("categoriaSelect");
+      select.classList.toggle("hidden");
+    }
+
+    function selectCategoria(valor) {
+      document.getElementById("categoriaInput").value = valor;
+      document.getElementById("categoriaSelect").classList.add("hidden");
+      atualizarTipos(valor);
+    }
+
+    function atualizarTipos(categoria) {
+      const tipoSelect = document.getElementById("tipoSelect");
+      tipoSelect.innerHTML = "";
+
+      if (tiposPorCategoria[categoria]) {
+        tiposPorCategoria[categoria].forEach(tipo => {
+          const option = document.createElement("option");
+          option.value = tipo;
+          option.textContent = tipo;
+          tipoSelect.appendChild(option);
+        });
+      } else {
+        const option = document.createElement("option");
+        option.textContent = "-- Selecione uma categoria primeiro --";
+        tipoSelect.appendChild(option);
+      }
+    }
+
+    function gerarId() {
+      return Math.floor(Math.random() * 1000000000);
+    }
+
+    function salvarProduto() {
+      const produto = {
+        id: gerarId(),
+        categoria: document.getElementById("categoriaInput").value,
+        tipo: document.getElementById("tipoSelect").value,
+        valor: document.getElementById("valor").value,
+        tempo: document.getElementById("tempo").value,
+        gasto: document.getElementById("gasto").value,
+        responsavel: document.getElementById("responsavel").value,
+        descricao: document.getElementById("descricao").value
+      };
+
+      // Salvar no localStorage (para teste sem backend)
+      const produtos = JSON.parse(localStorage.getItem("produtos") || "[]");
+      produtos.push(produto);
+      localStorage.setItem("produtos", JSON.stringify(produtos));
+
+      // Redirecionar para a lista
+      window.location.href = "listar.html";
+    }
+  </script>
+</body>
+</html>
