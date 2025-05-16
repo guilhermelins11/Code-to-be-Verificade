@@ -1,0 +1,91 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.sidebar {
+  width: 120px;
+  background-color: #0B386F;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  position: fixed;
+  height: 100vh;
+}
+
+.logo-img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 40px;
+}
+
+.menu-item {
+   width: 100%;
+  padding: 20px 0;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.menu-item span {
+  font-size: 16px;
+}
+
+.menu-item:hover {
+  background-color: #1F375A;
+}
+
+.menu-item.logout {
+  margin-top: auto;
+  background-color: #8B0000;
+  justify-content: center;
+}
+
+.menu-item.logout:hover {
+  background-color: #A52A2A;
+}
+
+main {
+  margin-left: 120px; 
+  padding: 30px;
+  flex: 1;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.grafico-placeholder {
+  height: 150px;
+  background-color: #eaeaea;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  font-size: 14px;
+}
