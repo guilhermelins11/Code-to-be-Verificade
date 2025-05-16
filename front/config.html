@@ -1,35 +1,41 @@
-<!-- config.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Configurações</title>
-  <link rel="stylesheet" href="css/painel.css" />
+  <link rel="stylesheet" href="../css/styleconf.css" />
   <link rel="shortcut icon" href="images/logoBlack.png" type="image/x-icon"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
+  <aside>
   <div class="sidebar">
-    <div class="menu-item logo">
-      <img src="images/logo.png" alt="Logo" class="logo-img" />
+     <div class="menu-item logo">
+        <img src="images/logo.png" alt="Logo" class="logo-img" />
+      </div>
+
+      <a href="geral.html" class="menu-item">
+        <i class="fas fa-chart-pie"></i>
+        <span>Geral</span>
+      </a>
+
+      <a href="estoque.html" class="menu-item active">
+        <i class="fas fa-boxes"></i>
+        <span>Estoque</span>
+      </a>
+
+      <a href="config.html" class="menu-item">
+        <i class="fas fa-cog"></i>
+        <span>Config.</span>
+      </a>
+
+      <a href="index.html" class="menu-item logout">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Sair</span>
+      </a>
     </div>
-    <a href="geral.html" class="menu-item">
-      <img src="images/icone-geral.png" alt="Geral" />
-      <span>Geral</span>
-    </a>
-    <a href="estoque.html" class="menu-item">
-      <img src="images/icone-estoque.png" alt="Estoque" />
-      <span>Estoque</span>
-    </a>
-    <a href="config.html" class="menu-item active">
-      <img src="images/icone-config.png" alt="Configurações" />
-      <span>Config.</span>
-    </a>
-    <a href="index.html" class="menu-item logout">
-      <img src="images/icone-sair.png" alt="Sair" />
-      <span>Sair</span>
-    </a>
-  </div>
+    </aside>
 
   <main class="main-content">
     <h1>Configurações da Conta</h1>
